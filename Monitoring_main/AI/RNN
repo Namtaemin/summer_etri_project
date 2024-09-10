@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 18 16:45:49 2022
+
+@author: etri
+"""
+import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import SimpleRNN
+
+# =============================================================================
+# model = Sequential()
+# model.add(SimpleRNN(3, batch_input_shape=(8, 2, 10), return_sequences=True))
+# model.summary()
+# =============================================================================
+
+
+# 가상의 코드
+# =============================================================================
+# hidden_state_t = 0 # 초기 은닉 상태 초기화
+# for input_t in input_length :   # 각 시점마다 입력을 받는다.
+#     output_t = tanh(input_t, hidden_state_t)    # 각 시점에 대해서 입력과 은닉 상태를 가지고 연산
+#     hidden_state_t = output_t   # 계산 결과는 현재 시점의 은닉 상태가 된다.
+# =============================================================================
+
+
+timesteps = 10      # 10번의 시점
+input_dim = 4       # 데이터의 길이
+hidden_units = 8    # 메모리셀의 용량
+
+# 입력에 해당되는 2D 텐서
+inputs = np.random.random((timesteps, input_dim))
+print('입력 2D 텐서 : \n',inputs, '\n')
+
+# 초기 은닉 상태는 0으로 초기화
+hidden_state_t = np.zeros((hidden_units,))
+print('초기 은닉 상태 : \n', hidden_state_t, '\n')
+
+
+#ht = tanh(WxXt + WhHt-1 + b)
+# d = 단어 벡터 차원
+# Dh = 은닉상태 크기
+# Wx = Dh*d, 입력x 가중치
+# Wh = Dh*Dh, 이전 시점 은닉 상태의 가중치
+# Xt = d*1, 단어벡터/inputs
+# Ht-1 = Dh*1, 이전 시점 은닉층
+# b = Dh*1, 편향
+
+# 크기 2D 텐서 생성, 입력에 대한 가중치
+Wx = np.random.random((hidden_units, input_dim)) # 8,4
+# 크기 2D 텐서 생성, 은닉 상테에 대한 가중치
+Wh = np.random.random((hidden_units, hidden_units)) # 8,8
+# 크기 1D 텐서 생성, 편향
+b = np.random.random((hidden_units)) # 8,
+
+print("가중치 Wx 크기 : ", np.shape(Wx))
+print("가중치 Hx 크기 : ", np.shape(Wh))
+print("편향 b 크기 : ", np.shape(b), '\n')
+
+total_hidden_states = []
+
+# 각 시점 별 입력값.
+for input_t in inputs :
+    # 은닉상태 계산식 : Wx * Xt + Wh * Ht-1 + b
+    output_t = np.tanh(np.dot(Wx,input_t) + np.dot(Wh, hidden_state_t) + b)
+    
+    # 각 시점 t별 메모리 셀의 출력의 크기 (timestep t, output_dim)
+    # 각 시점의 은닉 상태의 값을 계속해서 누적
+    total_hidden_states.append(list(output_t))
+    hidden_state_t = output_t
+    
+# 출력 시 값을 깔끔하게 해주는 용도.
+total_hidden_states = np.stack(total_hidden_states, axis = 0)
+
+# (timesteps, output_dim)
+print('모든 시점의 은닉 상태 : ')
+print(total_hidden_states)
+print(total_hidden_states.size)
+    
