@@ -2,7 +2,7 @@
 LSTM을 기반으로 하여 온도, 습도, 기압을 예측해줍니다.
 
 ### 데이터 흐름도
-<img src="./%20src/network.png" style="width : 1000px;">
+<img src="./%src/network.png" style="width : 1000px;">
 
 ## 목차
  <br>
