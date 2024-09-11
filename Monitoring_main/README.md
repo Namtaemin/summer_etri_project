@@ -140,8 +140,8 @@ LSTM을 기반으로 하여 온도, 습도, 기압을 예측해줍니다.
 
 <span>
 
-<img src="./20src/data_flow.png" style="width : 400px;">
-<img src="./20src/db_data.png" style="width : 400px;">
+<img src="./src/data_flow.png" style="width : 400px;">
+<img src="./src/db_data.png" style="width : 400px;">
 
 </span>
 
