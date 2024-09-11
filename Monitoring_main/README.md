@@ -154,7 +154,7 @@ LSTM을 기반으로 하여 온도, 습도, 기압을 예측해줍니다.
 ### 모델 학습 과정 
  |1시간 후를 예측하는 모델 제작|3시간 후를 예측하는 모델 제작|
  |:--:|:--:|
- | <img src="./src/1hour_Model.png" style="width : 350px;"> | <img src="./%src/3hour_Model.png" style="width : 350px;"> |
+ | <img src="./src/1hour_Model.png" style="width : 350px;"> | <img src="./src/3hour_Model.png" style="width : 350px;"> |
  | - 1시간 간격을 가진 데이터로 학습 <br> - 학습된 모델에 200개의 1시간 간격 데이터로 예측 결과 도출 | - 1시간 간격을 가진 데이터로 학습 <br> - 학습된 모델에 200개의 3시간 간격 데이터로 예측 결과 도출 |
  
  <br> <br> <br>
