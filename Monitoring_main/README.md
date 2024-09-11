@@ -215,5 +215,5 @@ LSTM을 기반으로 하여 온도, 습도, 기압을 예측해줍니다.
 ## 팀원
 | 팀원 | 담당 | github |
 |:---:|:---|:--:|
-| 남태민 | - Unity GUI 제작 <br> - 환경 제어문 작성 <br> - 센서 데이터 입력 | [Namtaemin](https://github.com/Namtaemin) |
+| 남태민 | - LSTM 모델 작성 <br> - Unity GUI 제작 <br> - 환경 제어문 작성 <br> - 센서 데이터 입력 | [Namtaemin](https://github.com/Namtaemin) |
 | 황진주 | - LSTM 모델 작성 <br> - API 서버 구축 <br> - Web GUI 제작 <br> - Database 관리 | [oMFDOo](https://github.com/oMFDOo) |
